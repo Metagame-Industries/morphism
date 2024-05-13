@@ -1,0 +1,15 @@
+[workspace]
+members = [
+    "prover",
+    "composer",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+
+[workspace.dependencies]
+thiserror = "1"
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+blake2 = "0.10"
