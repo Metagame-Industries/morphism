@@ -57,11 +57,6 @@ impl Album {
             .map(|f| H256::from(Self::digest(&f.to_be_bytes())))
             .collect::<Vec<_>>();
         let proof = smt.merkle_proof(keys.clone())?.compile(keys)?;
-        log::debug!(
-            "get proof of frames {:?} => \n0x{}",
-            frames,
-            hex::encode(&proof.0)
-        );
         Ok(proof.0)
     }
 
@@ -102,10 +97,6 @@ impl Album {
             })
             .collect::<Vec<_>>();
         let root = smt.update_all(v)?.clone();
-        log::debug!(
-            "frames saved, root: 0x{}",
-            hex::encode(<[u8; 32]>::from(root.clone()))
-        );
         smt.store_mut().save_root(&root)?;
         Ok(root)
     }
