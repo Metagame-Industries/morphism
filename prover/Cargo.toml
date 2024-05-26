@@ -3,4 +3,15 @@ name = "morphism-prover"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
+sha3 = "0.9.1"
+curve25519-dalek = { version = "3.2.1", features = ["serde"] }
+hex = { workspace = true }
+anyhow = "1"
+rand = "0.7.3"
+rand_core = "0.5.1"
+wasm-bindgen = "0.2.92"
+js-sys = "0.3.69"
